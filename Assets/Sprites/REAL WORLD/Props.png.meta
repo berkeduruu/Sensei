@@ -150,15 +150,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Props_0
+      name: "\xE7al\u01311"
       rect:
         serializedVersion: 2
-        x: 1
+        x: 2
         y: 0
-        width: 46
-        height: 11
+        width: 44
+        height: 10
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -172,15 +172,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Props_1
+      name: "\xE7al\u01312"
       rect:
         serializedVersion: 2
-        x: 46
+        x: 47
         y: 0
-        width: 13
-        height: 7
+        width: 11
+        height: 6
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -194,15 +194,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Props_2
+      name: "\xE7al\u01313"
       rect:
         serializedVersion: 2
-        x: 66
+        x: 67
         y: 0
-        width: 12
-        height: 10
+        width: 10
+        height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -216,15 +216,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Props_3
+      name: "\xE7al\u01314"
       rect:
         serializedVersion: 2
-        x: 80
+        x: 81
         y: 0
-        width: 14
-        height: 11
+        width: 12
+        height: 10
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -238,15 +238,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Props_4
+      name: "\xE7al\u01315"
       rect:
         serializedVersion: 2
-        x: 109
+        x: 110
         y: 0
-        width: 40
-        height: 29
+        width: 38
+        height: 28
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -260,15 +260,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Props_5
+      name: "ta\u015F1"
       rect:
         serializedVersion: 2
-        x: 159
+        x: 160
         y: 0
-        width: 18
-        height: 14
+        width: 16
+        height: 13
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -282,15 +282,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Props_6
+      name: "ta\u015F2"
       rect:
         serializedVersion: 2
-        x: 176
+        x: 177
         y: 0
-        width: 17
-        height: 12
+        width: 15
+        height: 11
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -304,15 +304,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Props_7
+      name: "\xE7al\u0131"
       rect:
         serializedVersion: 2
-        x: 196
+        x: 197
         y: 0
-        width: 23
-        height: 31
+        width: 21
+        height: 30
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -326,15 +326,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Props_8
+      name: "\xE7al\u01316"
       rect:
         serializedVersion: 2
-        x: 231
+        x: 232
         y: 0
-        width: 20
-        height: 11
+        width: 18
+        height: 10
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -351,7 +351,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 813b01fa148618b49b94bdefb9f121c3
     internalID: 0
     vertices: []
     indices: 
@@ -359,17 +359,19 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Props_0: 7265313343042191254
-      Props_1: -4871644234308700824
-      Props_2: 7466427622202046938
-      Props_3: 4489838820935638777
-      Props_4: -1870876656750283219
-      Props_5: -4004860913340282569
-      Props_6: -6362549862341014049
-      Props_7: -9085773957535209297
-      Props_8: 4556875247267356194
+      "ta\u015F1": -4004860913340282569
+      "ta\u015F2": -6362549862341014049
+      "\xE7al\u0131": -9085773957535209297
+      "\xE7al\u01311": 7265313343042191254
+      "\xE7al\u01312": -4871644234308700824
+      "\xE7al\u01313": 7466427622202046938
+      "\xE7al\u01314": 4489838820935638777
+      "\xE7al\u01315": -1870876656750283219
+      "\xE7al\u01316": 4556875247267356194
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
