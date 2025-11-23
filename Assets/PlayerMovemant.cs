@@ -32,6 +32,11 @@ public class SenseiController : MonoBehaviour
     private int currentComboIndex;
     private float lastAttackTime;
     
+    // Animasyon durum takibi (gereksiz güncellemeleri önlemek için)
+    private bool lastIsWalking;
+    private bool lastIsRunning;
+    private bool lastIsGrounded;
+    
     
     void Start()
     {
@@ -114,15 +119,52 @@ public class SenseiController : MonoBehaviour
     
     private void UpdateAnimationParameters()
     {
-        // Yürüme/Koşma Animasyonu
-        bool isMoving = Mathf.Abs(currentMoveInput.x) > 0.01f;
-        bool isRunning = isMoving && runHeld;
-        anim.SetBool("isRunning", isRunning);
-        anim.SetBool("isWalking", isMoving && !runHeld);
+        // Havadayken koşma/yürüme animasyonlarını devre dışı bırak
+        if (!isGrounded)
+        {
+            // Havadayken isRunning ve isWalking false olmalı
+            if (lastIsRunning)
+            {
+                anim.SetBool("isRunning", false);
+                lastIsRunning = false;
+            }
+            
+            if (lastIsWalking)
+            {
+                anim.SetBool("isWalking", false);
+                lastIsWalking = false;
+            }
+        }
+        else
+        {
+            // Yerdeyken normal yürüme/koşma animasyonları
+            bool isMoving = Mathf.Abs(currentMoveInput.x) > 0.01f;
+            bool isRunning = isMoving && runHeld;
+            bool isWalking = isMoving && !runHeld;
+            
+            // Sadece değer değiştiğinde güncelle (gereksiz animator güncellemelerini önle)
+            if (isRunning != lastIsRunning)
+            {
+                anim.SetBool("isRunning", isRunning);
+                lastIsRunning = isRunning;
+            }
+            
+            if (isWalking != lastIsWalking)
+            {
+                anim.SetBool("isWalking", isWalking);
+                lastIsWalking = isWalking;
+            }
+        }
         
         // Zıplama/Düşme Animasyonu parametreleri
         anim.SetFloat("yVelocity", rb.linearVelocity.y); // Yükselme/Düşme kontrolü için
-        anim.SetBool("isGrounded", isGrounded); // Yerde olma kontrolü için
+        
+        // isGrounded sadece değiştiğinde güncelle
+        if (isGrounded != lastIsGrounded)
+        {
+            anim.SetBool("isGrounded", isGrounded);
+            lastIsGrounded = isGrounded;
+        }
     }
 
     private void TriggerAttack(string triggerName)
