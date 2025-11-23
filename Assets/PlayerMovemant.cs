@@ -6,6 +6,14 @@ public class SenseiController : MonoBehaviour
     // --- Ayarlar (Inspector'da Görünür) ---
     [Header("Hareket Ayarları")]
     public float walkSpeed = 8f; 
+    public float runSpeed = 12f;
+
+    [Header("Saldırı Ayarları")]
+    public string attack1TriggerName = "Attack1";
+    public string attack2TriggerName = "Attack2";
+    public string attack3TriggerName = "Attack3";
+    public string airAttackTriggerName = "AirAttack";
+    public float comboResetTime = 0.8f;
     
     [Header("Zıplama Ayarları")]
     public float jumpForce = 12f; 
@@ -20,6 +28,9 @@ public class SenseiController : MonoBehaviour
     // --- Durum Değişkenleri ---
     private Vector2 currentMoveInput; // Klavye/Gamepad'den gelen girdi
     private bool isGrounded; // Yerde miyiz?
+    private bool runHeld; // Shift koşu tuşu basılı mı?
+    private int currentComboIndex;
+    private float lastAttackTime;
     
     
     void Start()
@@ -40,6 +51,24 @@ public class SenseiController : MonoBehaviour
     public void OnMove(InputValue value)
     {
         currentMoveInput = value.Get<Vector2>();
+    }
+
+    // Run Eylemi (Shift tuşu)
+    public void OnRun(InputValue value)
+    {
+        runHeld = value.isPressed;
+    }
+
+    public void OnAttackPrimary(InputValue value)
+    {
+        if (!value.isPressed) return;
+        HandleComboAttack();
+    }
+
+    public void OnAirAttack(InputValue value)
+    {
+        if (!value.isPressed || isGrounded) return;
+        TriggerAttack(airAttackTriggerName);
     }
 
     // Jump Eylemi (W tuşu)
@@ -79,18 +108,60 @@ public class SenseiController : MonoBehaviour
     private void HandleMovement()
     {
         // HAREKETİN ASIL GERÇEKLEŞTİĞİ YER
-        rb.linearVelocity = new Vector2(currentMoveInput.x * walkSpeed, rb.linearVelocity.y);
+        float targetSpeed = runHeld ? runSpeed : walkSpeed;
+        rb.linearVelocity = new Vector2(currentMoveInput.x * targetSpeed, rb.linearVelocity.y);
     }
     
     private void UpdateAnimationParameters()
     {
         // Yürüme/Koşma Animasyonu
         bool isMoving = Mathf.Abs(currentMoveInput.x) > 0.01f;
-        anim.SetBool("isRunning", isMoving); 
+        bool isRunning = isMoving && runHeld;
+        anim.SetBool("isRunning", isRunning);
+        anim.SetBool("isWalking", isMoving && !runHeld);
         
         // Zıplama/Düşme Animasyonu parametreleri
         anim.SetFloat("yVelocity", rb.linearVelocity.y); // Yükselme/Düşme kontrolü için
         anim.SetBool("isGrounded", isGrounded); // Yerde olma kontrolü için
+    }
+
+    private void TriggerAttack(string triggerName)
+    {
+        if (anim == null || string.IsNullOrEmpty(triggerName))
+        {
+            return;
+        }
+
+        anim.ResetTrigger(triggerName);
+        anim.SetTrigger(triggerName);
+    }
+
+    private void HandleComboAttack()
+    {
+        if (Time.time - lastAttackTime > comboResetTime)
+        {
+            currentComboIndex = 0;
+        }
+
+        string triggerToUse = GetComboTrigger(currentComboIndex);
+        TriggerAttack(triggerToUse);
+
+        currentComboIndex = (currentComboIndex + 1) % 3;
+        lastAttackTime = Time.time;
+    }
+
+    private string GetComboTrigger(int index)
+    {
+        switch (index)
+        {
+            case 0:
+                return attack1TriggerName;
+            case 1:
+                return attack2TriggerName;
+            case 2:
+            default:
+                return attack3TriggerName;
+        }
     }
 
     private void FlipCharacter()
