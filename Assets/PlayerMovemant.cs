@@ -176,6 +176,30 @@ public class SenseiController : MonoBehaviour
 
         anim.ResetTrigger(triggerName);
         anim.SetTrigger(triggerName);
+        
+        // Saldırı hitbox'unu aktif et
+        EnableAttackHitbox();
+    }
+    
+    void EnableAttackHitbox()
+    {
+        // Attack hitbox'unu bul ve aktif et
+        Transform attackHitbox = transform.Find("AttackHitbox");
+        if (attackHitbox != null)
+        {
+            attackHitbox.gameObject.SetActive(true);
+            // 0.3 saniye sonra kapat (saldırı animasyonu süresine göre ayarla)
+            Invoke("DisableAttackHitbox", 0.3f);
+        }
+    }
+    
+    void DisableAttackHitbox()
+    {
+        Transform attackHitbox = transform.Find("AttackHitbox");
+        if (attackHitbox != null)
+        {
+            attackHitbox.gameObject.SetActive(false);
+        }
     }
 
     private void HandleComboAttack()
