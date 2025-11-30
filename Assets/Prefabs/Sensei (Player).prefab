@@ -195,7 +195,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SenseiController
   walkSpeed: 8
-  jumpForce: 5
+  runSpeed: 12
+  attack1TriggerName: Attack1
+  attack2TriggerName: Attack2
+  attack3TriggerName: Attack3
+  airAttackTriggerName: AirAttack
+  comboResetTime: 0.8
+  jumpForce: 7
   groundCheckRadius: 0.2
   groundLayer:
     serializedVersion: 2

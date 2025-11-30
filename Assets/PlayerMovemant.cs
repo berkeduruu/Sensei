@@ -6,6 +6,14 @@ public class SenseiController : MonoBehaviour
     // --- Ayarlar (Inspector'da Görünür) ---
     [Header("Hareket Ayarları")]
     public float walkSpeed = 8f; 
+    public float runSpeed = 12f;
+
+    [Header("Saldırı Ayarları")]
+    public string attack1TriggerName = "Attack1";
+    public string attack2TriggerName = "Attack2";
+    public string attack3TriggerName = "Attack3";
+    public string airAttackTriggerName = "AirAttack";
+    public float comboResetTime = 0.8f;
     
     [Header("Zıplama Ayarları")]
     public float jumpForce = 12f; 
@@ -20,6 +28,14 @@ public class SenseiController : MonoBehaviour
     // --- Durum Değişkenleri ---
     private Vector2 currentMoveInput; // Klavye/Gamepad'den gelen girdi
     private bool isGrounded; // Yerde miyiz?
+    private bool runHeld; // Shift koşu tuşu basılı mı?
+    private int currentComboIndex;
+    private float lastAttackTime;
+    
+    // Animasyon durum takibi (gereksiz güncellemeleri önlemek için)
+    private bool lastIsWalking;
+    private bool lastIsRunning;
+    private bool lastIsGrounded;
     
     
     void Start()
@@ -40,6 +56,24 @@ public class SenseiController : MonoBehaviour
     public void OnMove(InputValue value)
     {
         currentMoveInput = value.Get<Vector2>();
+    }
+
+    // Run Eylemi (Shift tuşu)
+    public void OnRun(InputValue value)
+    {
+        runHeld = value.isPressed;
+    }
+
+    public void OnAttackPrimary(InputValue value)
+    {
+        if (!value.isPressed) return;
+        HandleComboAttack();
+    }
+
+    public void OnAirAttack(InputValue value)
+    {
+        if (!value.isPressed || isGrounded) return;
+        TriggerAttack(airAttackTriggerName);
     }
 
     // Jump Eylemi (W tuşu)
@@ -79,18 +113,121 @@ public class SenseiController : MonoBehaviour
     private void HandleMovement()
     {
         // HAREKETİN ASIL GERÇEKLEŞTİĞİ YER
-        rb.linearVelocity = new Vector2(currentMoveInput.x * walkSpeed, rb.linearVelocity.y);
+        float targetSpeed = runHeld ? runSpeed : walkSpeed;
+        rb.linearVelocity = new Vector2(currentMoveInput.x * targetSpeed, rb.linearVelocity.y);
     }
     
     private void UpdateAnimationParameters()
     {
-        // Yürüme/Koşma Animasyonu
-        bool isMoving = Mathf.Abs(currentMoveInput.x) > 0.01f;
-        anim.SetBool("isRunning", isMoving); 
+        // Havadayken koşma/yürüme animasyonlarını devre dışı bırak
+        if (!isGrounded)
+        {
+            // Havadayken isRunning ve isWalking false olmalı
+            if (lastIsRunning)
+            {
+                anim.SetBool("isRunning", false);
+                lastIsRunning = false;
+            }
+            
+            if (lastIsWalking)
+            {
+                anim.SetBool("isWalking", false);
+                lastIsWalking = false;
+            }
+        }
+        else
+        {
+            // Yerdeyken normal yürüme/koşma animasyonları
+            bool isMoving = Mathf.Abs(currentMoveInput.x) > 0.01f;
+            bool isRunning = isMoving && runHeld;
+            bool isWalking = isMoving && !runHeld;
+            
+            // Sadece değer değiştiğinde güncelle (gereksiz animator güncellemelerini önle)
+            if (isRunning != lastIsRunning)
+            {
+                anim.SetBool("isRunning", isRunning);
+                lastIsRunning = isRunning;
+            }
+            
+            if (isWalking != lastIsWalking)
+            {
+                anim.SetBool("isWalking", isWalking);
+                lastIsWalking = isWalking;
+            }
+        }
         
         // Zıplama/Düşme Animasyonu parametreleri
         anim.SetFloat("yVelocity", rb.linearVelocity.y); // Yükselme/Düşme kontrolü için
-        anim.SetBool("isGrounded", isGrounded); // Yerde olma kontrolü için
+        
+        // isGrounded sadece değiştiğinde güncelle
+        if (isGrounded != lastIsGrounded)
+        {
+            anim.SetBool("isGrounded", isGrounded);
+            lastIsGrounded = isGrounded;
+        }
+    }
+
+    private void TriggerAttack(string triggerName)
+    {
+        if (anim == null || string.IsNullOrEmpty(triggerName))
+        {
+            return;
+        }
+
+        anim.ResetTrigger(triggerName);
+        anim.SetTrigger(triggerName);
+        
+        // Saldırı hitbox'unu aktif et
+        EnableAttackHitbox();
+    }
+    
+    void EnableAttackHitbox()
+    {
+        // Attack hitbox'unu bul ve aktif et
+        Transform attackHitbox = transform.Find("AttackHitbox");
+        if (attackHitbox != null)
+        {
+            attackHitbox.gameObject.SetActive(true);
+            // 0.3 saniye sonra kapat (saldırı animasyonu süresine göre ayarla)
+            Invoke("DisableAttackHitbox", 0.3f);
+        }
+    }
+    
+    void DisableAttackHitbox()
+    {
+        Transform attackHitbox = transform.Find("AttackHitbox");
+        if (attackHitbox != null)
+        {
+            attackHitbox.gameObject.SetActive(false);
+        }
+    }
+
+    private void HandleComboAttack()
+    {
+        if (Time.time - lastAttackTime > comboResetTime)
+        {
+            currentComboIndex = 0;
+        }
+
+        string triggerToUse = GetComboTrigger(currentComboIndex);
+        TriggerAttack(triggerToUse);
+
+        currentComboIndex = (currentComboIndex + 1) % 3;
+        lastAttackTime = Time.time;
+    }
+
+    private string GetComboTrigger(int index)
+    {
+        switch (index)
+        {
+            case 0:
+                return attack1TriggerName;
+            case 1:
+                return attack2TriggerName;
+            case 2:
+            default:
+                return attack3TriggerName;
+        }
     }
 
     private void FlipCharacter()

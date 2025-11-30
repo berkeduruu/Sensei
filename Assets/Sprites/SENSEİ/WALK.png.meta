@@ -84,7 +84,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -155,6 +155,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: VisionOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -162,12 +175,12 @@ TextureImporter:
       name: WALK_0
       rect:
         serializedVersion: 2
-        x: 34
-        y: 14
-        width: 27
-        height: 33
+        x: 35
+        y: 15
+        width: 25
+        height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -184,12 +197,12 @@ TextureImporter:
       name: WALK_1
       rect:
         serializedVersion: 2
-        x: 130
-        y: 14
-        width: 27
-        height: 34
+        x: 131
+        y: 15
+        width: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -206,12 +219,12 @@ TextureImporter:
       name: WALK_2
       rect:
         serializedVersion: 2
-        x: 226
-        y: 14
-        width: 27
-        height: 33
+        x: 227
+        y: 15
+        width: 25
+        height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -228,12 +241,12 @@ TextureImporter:
       name: WALK_3
       rect:
         serializedVersion: 2
-        x: 323
-        y: 14
-        width: 27
-        height: 33
+        x: 324
+        y: 15
+        width: 25
+        height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -250,12 +263,12 @@ TextureImporter:
       name: WALK_4
       rect:
         serializedVersion: 2
-        x: 419
-        y: 14
-        width: 29
-        height: 32
+        x: 420
+        y: 15
+        width: 27
+        height: 30
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -272,12 +285,12 @@ TextureImporter:
       name: WALK_5
       rect:
         serializedVersion: 2
-        x: 514
-        y: 14
-        width: 27
-        height: 32
+        x: 515
+        y: 15
+        width: 25
+        height: 30
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -294,12 +307,12 @@ TextureImporter:
       name: WALK_6
       rect:
         serializedVersion: 2
-        x: 610
-        y: 14
-        width: 27
-        height: 33
+        x: 611
+        y: 15
+        width: 25
+        height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -316,12 +329,12 @@ TextureImporter:
       name: WALK_7
       rect:
         serializedVersion: 2
-        x: 706
-        y: 14
-        width: 27
-        height: 34
+        x: 707
+        y: 15
+        width: 25
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -338,12 +351,12 @@ TextureImporter:
       name: WALK_8
       rect:
         serializedVersion: 2
-        x: 802
-        y: 14
-        width: 28
-        height: 33
+        x: 803
+        y: 15
+        width: 26
+        height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -360,12 +373,12 @@ TextureImporter:
       name: WALK_9
       rect:
         serializedVersion: 2
-        x: 899
-        y: 14
-        width: 27
-        height: 33
+        x: 900
+        y: 15
+        width: 25
+        height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -382,12 +395,12 @@ TextureImporter:
       name: WALK_10
       rect:
         serializedVersion: 2
-        x: 995
-        y: 14
-        width: 27
-        height: 32
+        x: 996
+        y: 15
+        width: 25
+        height: 30
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -404,12 +417,12 @@ TextureImporter:
       name: WALK_11
       rect:
         serializedVersion: 2
-        x: 1090
-        y: 14
-        width: 27
-        height: 32
+        x: 1091
+        y: 15
+        width: 25
+        height: 30
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -426,7 +439,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 07a6cc840f36f4eec8581406f444931c
     internalID: 0
     vertices: []
     indices: 
@@ -434,7 +447,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       WALK_0: 1675591081817592477
       WALK_1: 8567217733156871805
