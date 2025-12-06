@@ -5,7 +5,7 @@ public class DamageDealer : MonoBehaviour
     [Header("Hasar Ayarları")]
     public float damage = 10f;
     public string[] targetTags = { "Player", "Boss" }; // Hangi tag'lere hasar verir
-    public float attackCooldown = 0.5f; // Aynı hedefe tekrar hasar verme süresi
+    public float attackCooldown = 0.3f; // Aynı hedefe tekrar hasar verme süresi (daha kısa)
     
     [Header("Hitbox Ayarları")]
     public bool destroyOnHit = false; // Vurduktan sonra yok olsun mu (projecile için)
@@ -28,52 +28,53 @@ public class DamageDealer : MonoBehaviour
     
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log($"[DamageDealer] {gameObject.name} trigger'a girdi: {other.gameObject.name} (Tag: {other.tag})");
-        
-        // Cooldown kontrolü
-        if (Time.time < lastHitTime + attackCooldown && other.gameObject == lastHitTarget)
-        {
-            Debug.Log($"[DamageDealer] Cooldown aktif, hasar verilemiyor.");
-            return;
-        }
-        
-        // Tag kontrolü
+        TryDealDamage(other);
+    }
+    
+    void OnTriggerStay2D(Collider2D other)
+    {
+        // Sürekli temas halinde de hasar vermeyi dene (daha güvenilir)
+        TryDealDamage(other);
+    }
+    
+    void TryDealDamage(Collider2D other)
+    {
+        // Tag kontrolü önce (hızlı çıkış)
         bool canDamage = false;
         foreach (string tag in targetTags)
         {
             if (other.CompareTag(tag))
             {
                 canDamage = true;
-                Debug.Log($"[DamageDealer] Tag eşleşti: {tag}");
                 break;
             }
         }
         
-        if (!canDamage)
-        {
-            Debug.Log($"[DamageDealer] Tag eşleşmedi. Hedef tag: {other.tag}, İstenen tag'ler: {string.Join(", ", targetTags)}");
-            return;
-        }
+        if (!canDamage) return;
         
-        // HealthSystem'i bul ve hasar ver
+        // HealthSystem'i bul
         HealthSystem health = other.GetComponent<HealthSystem>();
-        if (health == null)
+        if (health == null || health.IsDead())
         {
-            Debug.LogWarning($"[DamageDealer] {other.gameObject.name} üzerinde HealthSystem bulunamadı!");
             return;
         }
         
-        if (health.IsDead())
+        // Cooldown kontrolü (hedef bazlı)
+        string targetID = other.gameObject.GetInstanceID().ToString();
+        if (lastHitTarget != null && lastHitTarget == other.gameObject)
         {
-            Debug.Log($"[DamageDealer] {other.gameObject.name} zaten ölü, hasar verilemiyor.");
-            return;
+            if (Time.time < lastHitTime + attackCooldown)
+            {
+                return; // Cooldown aktif
+            }
         }
         
+        // Hasar ver
         health.TakeDamage(damage);
         lastHitTime = Time.time;
         lastHitTarget = other.gameObject;
         
-        Debug.Log($"✅ {gameObject.name} {other.gameObject.name}'e {damage} hasar verdi! (Kalan can: {health.currentHealth})");
+        Debug.Log($"✅ {gameObject.name} {other.gameObject.name}'e {damage} hasar verdi! (Kalan: {health.currentHealth}/{health.maxHealth})");
         
         if (destroyOnHit)
         {

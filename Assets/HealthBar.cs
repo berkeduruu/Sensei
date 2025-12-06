@@ -52,7 +52,7 @@ public class HealthBar : MonoBehaviour
         
         float healthPercentage = targetHealth.GetHealthPercentage();
         
-        // Slider'ı güncelle
+        // Slider'ı güncelle (hemen güncelle, animasyon yok)
         if (healthSlider != null)
         {
             healthSlider.value = currentHealth;
@@ -76,6 +76,8 @@ public class HealthBar : MonoBehaviour
         {
             healthText.text = $"{Mathf.CeilToInt(currentHealth)}/{Mathf.CeilToInt(targetHealth.maxHealth)}";
         }
+        
+        Debug.Log($"[HealthBar] Can barı güncellendi: {currentHealth}/{targetHealth.maxHealth} ({healthPercentage * 100:F1}%)");
     }
     
     void OnTargetDeath()

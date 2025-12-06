@@ -8,8 +8,8 @@ public class HealthSystem : MonoBehaviour
     public float currentHealth;
     
     [Header("Ölüm Ayarları")]
-    public bool destroyOnDeath = true;
-    public float destroyDelay = 2f;
+    public bool destroyOnDeath = true; // Player için false yap, Boss için true
+    public float destroyDelay = 3f; // Ölme animasyonu için yeterli süre (3 saniye)
     
     [Header("Events")]
     public UnityEvent<float> OnHealthChanged; // (currentHealth)
@@ -28,6 +28,7 @@ public class HealthSystem : MonoBehaviour
     {
         if (isDead) return;
         
+        float healthBefore = currentHealth;
         currentHealth -= damage;
         currentHealth = Mathf.Max(0, currentHealth); // Negatif olamaz
         
@@ -36,7 +37,8 @@ public class HealthSystem : MonoBehaviour
         
         Debug.Log($"{gameObject.name} hasar aldı: {damage} (Kalan can: {currentHealth}/{maxHealth})");
         
-        if (currentHealth <= 0)
+        // Sadece can 0'a düştüyse öl (hemen ölme, önce hasar al)
+        if (currentHealth <= 0 && healthBefore > 0)
         {
             Die();
         }
@@ -61,6 +63,7 @@ public class HealthSystem : MonoBehaviour
         
         OnDeath?.Invoke();
         
+        // destroyOnDeath true ise objeyi yok et
         if (destroyOnDeath)
         {
             Destroy(gameObject, destroyDelay);

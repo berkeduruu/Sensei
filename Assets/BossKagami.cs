@@ -9,6 +9,9 @@ public class BossKagami : MonoBehaviour
     public float attackRange = 2f;
     public float detectionRange = 10f;
     
+    [Header("Hasar Animasyonu")]
+    public string hurtTriggerName = "Hurt"; // Animator'daki Hurt trigger parametresi
+    
     [Header("Referanslar")]
     public Transform playerTarget;
     public Animator animator;
@@ -83,12 +86,44 @@ public class BossKagami : MonoBehaviour
             rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionY;
         }
         
+        // HealthSystem'e event'leri bağla
+        HealthSystem healthSystem = GetComponent<HealthSystem>();
+        if (healthSystem != null)
+        {
+            healthSystem.OnDamageTaken.AddListener(OnBossHurt); // Hasar alındığında Hurt animasyonu
+        }
+        
         Debug.Log($"🎮 Boss başlatıldı! Detection Range: {detectionRange}, Attack Range: {attackRange}, Move Speed: {moveSpeed}");
+    }
+    
+    // Hasar alındığında çağrılır
+    void OnBossHurt(float damage)
+    {
+        if (!isAlive) return; // Ölüyse hurt animasyonu oynatma
+        
+        // Hurt animasyonunu tetikle
+        if (animator != null && !string.IsNullOrEmpty(hurtTriggerName))
+        {
+            animator.ResetTrigger(hurtTriggerName);
+            animator.SetTrigger(hurtTriggerName);
+            Debug.Log($"💥 Boss hasar aldı! Hurt animasyonu tetiklendi. (Hasar: {damage})");
+        }
     }
     
     void Update()
     {
         if (!isAlive) return;
+        
+        // HealthSystem kontrolü - eğer ölüyse dur
+        HealthSystem health = GetComponent<HealthSystem>();
+        if (health != null && health.IsDead())
+        {
+            if (isAlive) // Sadece bir kez Die() çağrılsın
+            {
+                Die();
+            }
+            return;
+        }
         
         // Player'ı takip et ve saldır
         if (playerTarget != null)
@@ -197,8 +232,9 @@ public class BossKagami : MonoBehaviour
         {
             attackHitbox.gameObject.SetActive(true);
             Debug.Log("✅ Boss AttackHitbox aktif edildi!");
-            // 0.5 saniye sonra kapat (saldırı animasyonu süresine göre ayarla)
-            Invoke("DisableAttackHitbox", 0.5f);
+            // Daha uzun süre aktif tut (saldırı animasyonu süresine göre ayarla)
+            // 0.8 saniye sonra kapat (daha güvenilir vuruş için)
+            Invoke("DisableAttackHitbox", 0.8f);
         }
         else
         {
@@ -227,9 +263,27 @@ public class BossKagami : MonoBehaviour
         
         // HealthSystem kullanıyorsa onu kullan
         HealthSystem health = GetComponent<HealthSystem>();
+        bool wasAlive = true;
+        
         if (health != null)
         {
+            float healthBefore = health.currentHealth;
             health.TakeDamage(damage);
+            
+            // Eğer öldüyse, ölme animasyonunu tetikle
+            if (health.IsDead() && healthBefore > 0)
+            {
+                wasAlive = false;
+                Die();
+            }
+            else if (!health.IsDead())
+            {
+                // Sadece hasar aldıysa, hurt animasyonu
+                if (animator != null && animator.enabled)
+                {
+                    animator.SetTrigger("Hurt");
+                }
+            }
         }
         else
         {
@@ -238,28 +292,44 @@ public class BossKagami : MonoBehaviour
             
             if (currentHealth <= 0)
             {
+                wasAlive = false;
                 Die();
             }
-        }
-        
-        // Hurt animasyonu
-        if (animator != null && animator.enabled)
-        {
-            animator.SetTrigger("Hurt");
+            else
+            {
+                // Sadece hasar aldıysa, hurt animasyonu
+                if (animator != null && animator.enabled)
+                {
+                    animator.SetTrigger("Hurt");
+                }
+            }
         }
     }
     
     void Die()
     {
+        if (!isAlive) return; // Zaten ölüyse tekrar çağrılmasın
+        
         isAlive = false;
         
-        // Death animasyonu
+        Debug.Log("💀 Boss öldü! Death animasyonu tetikleniyor...");
+        
+        // Death animasyonu (sadece bir kez tetikle)
         if (animator != null && animator.enabled)
         {
+            // Önceki trigger'ları temizle
+            animator.ResetTrigger("Death");
             animator.SetTrigger("Death");
+            
+            // Animator'ın çalışmaya devam etmesini sağla (animasyon oynanması için)
+            Debug.Log("✅ Death trigger tetiklendi, animasyon oynanıyor...");
+        }
+        else
+        {
+            Debug.LogWarning("⚠️ Animator bulunamadı veya devre dışı! Death animasyonu oynanamayacak.");
         }
         
-        // Collider'ı devre dışı bırak
+        // Collider'ı devre dışı bırak (artık hasar almasın)
         Collider2D col = GetComponent<Collider2D>();
         if (col != null)
         {
@@ -275,6 +345,9 @@ public class BossKagami : MonoBehaviour
         
         // Hareketi durdur
         moveSpeed = 0;
+        
+        // Update'i durdur (artık çalışmasın - ama animator çalışmaya devam etsin)
+        // enabled = false; // Bu satırı kaldırdık, animator çalışmaya devam etmeli
     }
     
     void UpdateAnimations()

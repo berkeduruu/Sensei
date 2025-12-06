@@ -15,11 +15,15 @@ public class SenseiController : MonoBehaviour
     public string airAttackTriggerName = "AirAttack";
     public float comboResetTime = 0.8f;
     
+    [Header("Hasar Animasyonu")]
+    public string hurtTriggerName = "Hurt"; // Animator'daki Hurt trigger parametresi
+    
     [Header("Zıplama Ayarları")]
     public float jumpForce = 12f; 
     public float groundCheckRadius = 0.2f; // GroundCheck sensörünün yarıçapı
     public LayerMask groundLayer; // Zeminin katmanı
     public Transform groundCheck; // Ayak altındaki boş obje referansı
+    
     
     // --- Özel Bileşenler ---
     private Rigidbody2D rb;
@@ -37,16 +41,51 @@ public class SenseiController : MonoBehaviour
     private bool lastIsRunning;
     private bool lastIsGrounded;
     
+    // Ölüm kontrolü
+    private bool isDead = false;
+    private HealthSystem healthSystem;
     
     void Start()
     {
         // Bileşenleri al
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>(); 
+        anim = GetComponent<Animator>();
+        healthSystem = GetComponent<HealthSystem>();
         
         if (rb == null || anim == null)
         {
             Debug.LogError("Gerekli bileşenler (Rigidbody2D/Animator) eksik! Lütfen ekleyin.");
+        }
+        
+        // HealthSystem'e event'leri bağla
+        if (healthSystem != null)
+        {
+            healthSystem.OnDeath.AddListener(OnPlayerDeath);
+            healthSystem.OnDamageTaken.AddListener(OnPlayerHurt); // Hasar alındığında Hurt animasyonu
+        }
+    }
+    
+    void OnPlayerDeath()
+    {
+        isDead = true;
+        Debug.Log("💀 Player öldü! Hareket ve input devre dışı.");
+        
+        // Input'u tamamen durdur
+        currentMoveInput = Vector2.zero;
+        runHeld = false;
+    }
+    
+    // Hasar alındığında çağrılır
+    void OnPlayerHurt(float damage)
+    {
+        if (isDead) return; // Ölüyse hurt animasyonu oynatma
+        
+        // Hurt animasyonunu tetikle
+        if (anim != null && !string.IsNullOrEmpty(hurtTriggerName))
+        {
+            anim.ResetTrigger(hurtTriggerName);
+            anim.SetTrigger(hurtTriggerName);
+            Debug.Log($"💥 Player hasar aldı! Hurt animasyonu tetiklendi. (Hasar: {damage})");
         }
     }
 
@@ -55,31 +94,35 @@ public class SenseiController : MonoBehaviour
     // Move Eylemi (WASD/Oklar)
     public void OnMove(InputValue value)
     {
+        if (isDead) return; // Ölüyse input almasın
         currentMoveInput = value.Get<Vector2>();
     }
 
     // Run Eylemi (Shift tuşu)
     public void OnRun(InputValue value)
     {
+        if (isDead) return; // Ölüyse input almasın
         runHeld = value.isPressed;
     }
 
     public void OnAttackPrimary(InputValue value)
     {
-        if (!value.isPressed) return;
+        if (isDead || !value.isPressed) return; // Ölüyse saldıramasın
         HandleComboAttack();
     }
 
     public void OnAirAttack(InputValue value)
     {
-        if (!value.isPressed || isGrounded) return;
+        if (isDead || !value.isPressed || isGrounded) return; // Ölüyse saldıramasın
         TriggerAttack(airAttackTriggerName);
     }
 
     // Jump Eylemi (W tuşu)
     public void OnJump(InputValue value)
     {
-        if (isGrounded)
+        if (isDead) return; // Ölüyse zıplayamasın
+        
+        if (isGrounded && value.isPressed)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f); // Dikey hızı sıfırla
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse); 
@@ -93,13 +136,20 @@ public class SenseiController : MonoBehaviour
 
     void Update()
     {
+        if (isDead) return; // Ölüyse input almasın
+        
         FlipCharacter();
     }
 
     void FixedUpdate()
     {
+        if (isDead) return; // Ölüyse hareket etmesin
+        
         // 1. Yer Kontrolü
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        if (groundCheck != null)
+        {
+            isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        }
         
         // 2. Fiziksel Hareketi Uygula
         HandleMovement();
@@ -116,7 +166,6 @@ public class SenseiController : MonoBehaviour
         float targetSpeed = runHeld ? runSpeed : walkSpeed;
         rb.linearVelocity = new Vector2(currentMoveInput.x * targetSpeed, rb.linearVelocity.y);
     }
-    
     private void UpdateAnimationParameters()
     {
         // Havadayken koşma/yürüme animasyonlarını devre dışı bırak
@@ -188,8 +237,14 @@ public class SenseiController : MonoBehaviour
         if (attackHitbox != null)
         {
             attackHitbox.gameObject.SetActive(true);
-            // 0.3 saniye sonra kapat (saldırı animasyonu süresine göre ayarla)
-            Invoke("DisableAttackHitbox", 0.3f);
+            Debug.Log("✅ Player AttackHitbox aktif edildi!");
+            // Daha uzun süre aktif tut (combo saldırıları için)
+            // 0.5 saniye sonra kapat (daha güvenilir vuruş için)
+            Invoke("DisableAttackHitbox", 0.5f);
+        }
+        else
+        {
+            Debug.LogWarning("⚠️ Player AttackHitbox bulunamadı! Lütfen Player'ın child'ı olarak 'AttackHitbox' objesi oluşturun.");
         }
     }
     
@@ -262,5 +317,6 @@ public class SenseiController : MonoBehaviour
             // groundCheckRadius değişkeninin boyutunu gösterir.
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
         }
+        
     }
 }
