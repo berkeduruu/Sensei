@@ -11716,8 +11716,16 @@ PrefabInstance:
       value: Sensei (Player)
       objectReference: {fileID: 0}
     - target: {fileID: 6620841631690414513, guid: ad7b3c522ed3547c389beaded8d27267, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 815424164945274260, guid: 2a0134650cb58b442a7fe196f69040c7, type: 3}
+    - target: {fileID: 6620841631690414513, guid: ad7b3c522ed3547c389beaded8d27267, type: 3}
       propertyPath: m_SortingOrder
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6620841631690414513, guid: ad7b3c522ed3547c389beaded8d27267, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
