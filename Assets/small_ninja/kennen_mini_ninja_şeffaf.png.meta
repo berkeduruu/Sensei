@@ -1,0 +1,637 @@
+fileFormatVersion: 2
+guid: 26fdf1b1e912b814cb14db8a006878be
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1472392374466999334
+    second: "kennen_mini_ninja_\u015Feffaf_0"
+  - first:
+      213: 3764984759063312679
+    second: "kennen_mini_ninja_\u015Feffaf_1"
+  - first:
+      213: -1998590221127063056
+    second: "kennen_mini_ninja_\u015Feffaf_2"
+  - first:
+      213: -2440866397970998480
+    second: "kennen_mini_ninja_\u015Feffaf_3"
+  - first:
+      213: -3317569905077815636
+    second: "kennen_mini_ninja_\u015Feffaf_4"
+  - first:
+      213: -2393932137661594401
+    second: "kennen_mini_ninja_\u015Feffaf_5"
+  - first:
+      213: 8662232807194583499
+    second: "kennen_mini_ninja_\u015Feffaf_6"
+  - first:
+      213: -4488404994471987570
+    second: "kennen_mini_ninja_\u015Feffaf_7"
+  - first:
+      213: -7950200364325131852
+    second: "kennen_mini_ninja_\u015Feffaf_8"
+  - first:
+      213: 5451274089987975904
+    second: "kennen_mini_ninja_\u015Feffaf_9"
+  - first:
+      213: -6340481985885920887
+    second: "kennen_mini_ninja_\u015Feffaf_10"
+  - first:
+      213: -7426360577456594795
+    second: "kennen_mini_ninja_\u015Feffaf_11"
+  - first:
+      213: 1749456859611717526
+    second: "kennen_mini_ninja_\u015Feffaf_12"
+  - first:
+      213: -8976239959349557749
+    second: "kennen_mini_ninja_\u015Feffaf_13"
+  - first:
+      213: 8614120794549675424
+    second: "kennen_mini_ninja_\u015Feffaf_14"
+  - first:
+      213: 5705790474465561842
+    second: "kennen_mini_ninja_\u015Feffaf_15"
+  - first:
+      213: -932489878436173152
+    second: "kennen_mini_ninja_\u015Feffaf_16"
+  - first:
+      213: 9014211768901111963
+    second: "kennen_mini_ninja_\u015Feffaf_17"
+  - first:
+      213: -2511146161405501548
+    second: "kennen_mini_ninja_\u015Feffaf_18"
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: "kennen_mini_ninja_\u015Feffaf_0"
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 2061
+        width: 200
+        height: 364
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adb86edbfe2019be0800000000000000
+      internalID: -1472392374466999334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kennen_mini_ninja_\u015Feffaf_1"
+      rect:
+        serializedVersion: 2
+        x: 457
+        y: 2058
+        width: 200
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7297abcc0b9ef3430800000000000000
+      internalID: 3764984759063312679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kennen_mini_ninja_\u015Feffaf_2"
+      rect:
+        serializedVersion: 2
+        x: 778
+        y: 2059
+        width: 307
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f9e62a68c49344e0800000000000000
+      internalID: -1998590221127063056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kennen_mini_ninja_\u015Feffaf_3"
+      rect:
+        serializedVersion: 2
+        x: 1187
+        y: 2060
+        width: 356
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03b50cc71fc402ed0800000000000000
+      internalID: -2440866397970998480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kennen_mini_ninja_\u015Feffaf_4"
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 1616
+        width: 238
+        height: 353
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca67f42afbf95f1d0800000000000000
+      internalID: -3317569905077815636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kennen_mini_ninja_\u015Feffaf_5"
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1612
+        width: 233
+        height: 354
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd40a46876b07ced0800000000000000
+      internalID: -2393932137661594401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kennen_mini_ninja_\u015Feffaf_6"
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 1610
+        width: 660
+        height: 358
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc1619af7de663870800000000000000
+      internalID: 8662232807194583499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kennen_mini_ninja_\u015Feffaf_7"
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1104
+        width: 315
+        height: 353
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e867868207bf5b1c0800000000000000
+      internalID: -4488404994471987570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kennen_mini_ninja_\u015Feffaf_8"
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 1107
+        width: 295
+        height: 390
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b9283ff3e63ba190800000000000000
+      internalID: -7950200364325131852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kennen_mini_ninja_\u015Feffaf_9"
+      rect:
+        serializedVersion: 2
+        x: 761
+        y: 1103
+        width: 391
+        height: 359
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ea260b17e0d6ab40800000000000000
+      internalID: 5451274089987975904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kennen_mini_ninja_\u015Feffaf_10"
+      rect:
+        serializedVersion: 2
+        x: 1199
+        y: 1104
+        width: 329
+        height: 377
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 981a1862a351208a0800000000000000
+      internalID: -6340481985885920887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kennen_mini_ninja_\u015Feffaf_11"
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 582
+        width: 335
+        height: 422
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5902cbeb66440f890800000000000000
+      internalID: -7426360577456594795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kennen_mini_ninja_\u015Feffaf_12"
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 586
+        width: 300
+        height: 403
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69fd60baeb1574810800000000000000
+      internalID: 1749456859611717526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kennen_mini_ninja_\u015Feffaf_13"
+      rect:
+        serializedVersion: 2
+        x: 904
+        y: 580
+        width: 212
+        height: 392
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b068d4ca05dfd6380800000000000000
+      internalID: -8976239959349557749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kennen_mini_ninja_\u015Feffaf_14"
+      rect:
+        serializedVersion: 2
+        x: 1291
+        y: 583
+        width: 287
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a5607b19318b8770800000000000000
+      internalID: 8614120794549675424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kennen_mini_ninja_\u015Feffaf_15"
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 67
+        width: 210
+        height: 390
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fcc359b43a0f2f40800000000000000
+      internalID: 5705790474465561842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kennen_mini_ninja_\u015Feffaf_16"
+      rect:
+        serializedVersion: 2
+        x: 1486
+        y: 391
+        width: 40
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0aa2a2765612f03f0800000000000000
+      internalID: -932489878436173152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kennen_mini_ninja_\u015Feffaf_17"
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 80
+        width: 413
+        height: 213
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b901f7f28d9e81d70800000000000000
+      internalID: 9014211768901111963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "kennen_mini_ninja_\u015Feffaf_18"
+      rect:
+        serializedVersion: 2
+        x: 1199
+        y: 63
+        width: 436
+        height: 316
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49fd65eeedd962dd0800000000000000
+      internalID: -2511146161405501548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      "kennen_mini_ninja_\u015Feffaf_0": -1472392374466999334
+      "kennen_mini_ninja_\u015Feffaf_1": 3764984759063312679
+      "kennen_mini_ninja_\u015Feffaf_10": -6340481985885920887
+      "kennen_mini_ninja_\u015Feffaf_11": -7426360577456594795
+      "kennen_mini_ninja_\u015Feffaf_12": 1749456859611717526
+      "kennen_mini_ninja_\u015Feffaf_13": -8976239959349557749
+      "kennen_mini_ninja_\u015Feffaf_14": 8614120794549675424
+      "kennen_mini_ninja_\u015Feffaf_15": 5705790474465561842
+      "kennen_mini_ninja_\u015Feffaf_16": -932489878436173152
+      "kennen_mini_ninja_\u015Feffaf_17": 9014211768901111963
+      "kennen_mini_ninja_\u015Feffaf_18": -2511146161405501548
+      "kennen_mini_ninja_\u015Feffaf_2": -1998590221127063056
+      "kennen_mini_ninja_\u015Feffaf_3": -2440866397970998480
+      "kennen_mini_ninja_\u015Feffaf_4": -3317569905077815636
+      "kennen_mini_ninja_\u015Feffaf_5": -2393932137661594401
+      "kennen_mini_ninja_\u015Feffaf_6": 8662232807194583499
+      "kennen_mini_ninja_\u015Feffaf_7": -4488404994471987570
+      "kennen_mini_ninja_\u015Feffaf_8": -7950200364325131852
+      "kennen_mini_ninja_\u015Feffaf_9": 5451274089987975904
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
