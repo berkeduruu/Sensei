@@ -1,19 +1,19 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; // Sahne iþlemleri için gerekli kütüphane
+using UnityEngine.SceneManagement; // Sahne iï¿½lemleri iï¿½in gerekli kï¿½tï¿½phane
 
 public class MainMenuManager : MonoBehaviour
 {
     // OYNA (Start) Butonu buna basacak
     public void PlayGame()
     {
-        // Sýradaki sahneye geç (Level 1'e)
+        // Sï¿½radaki sahneye geï¿½ (Level 1'e)
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    // ÇIKIÞ (Quit) Butonu buna basacak
+    // ï¿½IKIï¿½ (Quit) Butonu buna basacak
     public void QuitGame()
     {
-        Debug.Log("Oyundan çýkýldý!"); // Editörde çalýþtýðýný görmek için mesaj
+        Debug.Log("Oyundan ï¿½ï¿½kï¿½ldï¿½!"); // Editï¿½rde ï¿½alï¿½ï¿½tï¿½ï¿½ï¿½nï¿½ gï¿½rmek iï¿½in mesaj
         Application.Quit();
     }
 }
