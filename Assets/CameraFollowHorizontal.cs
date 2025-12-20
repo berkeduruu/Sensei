@@ -27,7 +27,7 @@ public class CameraFollowHorizontal : MonoBehaviour
         // Eğer target varsa, başlangıçta hedefe göre konumlandır
         if (target != null)
         {
-            currentCameraX = Mathf.Clamp(target.position.x, minX, maxX);
+            currentCameraX = target.position.x;
         }
         
         transform.position = new Vector3(currentCameraX, cameraY, cameraZ);
@@ -63,9 +63,6 @@ public class CameraFollowHorizontal : MonoBehaviour
             // Dead zone yoksa, direkt player'ı takip et
             desiredCameraX = targetX;
         }
-        
-        // Sahne sınırlarını uygula
-        desiredCameraX = Mathf.Clamp(desiredCameraX, minX, maxX);
         
         // Yumuşak takip (smooth follow)
         currentCameraX = Mathf.Lerp(currentCameraX, desiredCameraX, smoothSpeed);

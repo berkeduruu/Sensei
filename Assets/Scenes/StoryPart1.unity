@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StoryManager
   ekrandakiGorsel: {fileID: 1146015401}
-  sonrakiSahneAdi: 
+  sonrakiSahneAdi: JumpTutorialScene
   hikayeKareleri:
   - {fileID: -4762627324754857255, guid: 77b8a6d67c2264cb794353a97bc63faf, type: 3}
   - {fileID: 5819150662236473732, guid: 03395a0f254a94f81b85bf3d0d468e6b, type: 3}

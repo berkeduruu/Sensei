@@ -39,9 +39,9 @@ public class StoryManager : MonoBehaviour
         }
         else
         {
-            // Resimler bitti, oyuna (diğer sahneye) geç
+            // Resimler bitti, loading scene üzerinden oyuna geç
             Debug.Log("Hikaye bitti, oyun sahnesi yükleniyor...");
-            SceneManager.LoadScene(sonrakiSahneAdi);
+            LoadingSceneManager.LoadScene(sonrakiSahneAdi);
         }
     }
 
