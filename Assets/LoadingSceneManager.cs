@@ -72,71 +72,42 @@ public class LoadingSceneManager : MonoBehaviour
     
     IEnumerator LoadSceneAsync()
     {
-        // Sahneyi asenkron olarak yükle (ama henüz aktif etme)
         asyncOperation = SceneManager.LoadSceneAsync(hedefSahneAdi);
-        asyncOperation.allowSceneActivation = false; // Sahneyi hemen aktif etme
-        
-        // Minimum süre ve loading tamamlanana kadar bekle
-        while (loadingTimer < minimumLoadingSuresi || asyncOperation.progress < 0.9f)
+        asyncOperation.allowSceneActivation = false;
+
+        float currentDisplayValue = 0f;
+
+        while (!asyncOperation.isDone)
         {
-            loadingTimer += Time.deltaTime;
-            
-            // Loading progress'i hesapla (0-1 arası)
-            // asyncOperation.progress 0-0.9 arası gider, 0.9'da durur
-            // allowSceneActivation false olduğu için 1.0'a gitmez
-            loadingProgress = Mathf.Clamp01(asyncOperation.progress / 0.9f);
-            
-            // Minimum süre dolmadan progress'i yavaşça artır
-            if (loadingTimer < minimumLoadingSuresi)
-            {
-                float timeProgress = loadingTimer / minimumLoadingSuresi;
-                // Gerçek loading progress ile zaman progress'ini birleştir
-                loadingProgress = Mathf.Max(loadingProgress, timeProgress);
-            }
-            
-            // Loading bar'ı güncelle
+            float realTarget = Mathf.Clamp01(asyncOperation.progress / 0.9f);
+
+            currentDisplayValue = Mathf.MoveTowards(currentDisplayValue, realTarget, Time.deltaTime * 0.5f);
+
             if (loadingBar != null)
             {
-                loadingBar.value = loadingProgress;
-                // Debug (her 0.1 saniyede bir log)
-                if (Time.frameCount % 10 == 0)
-                {
-                    Debug.Log($"Loading Progress: {loadingProgress * 100f:F1}% (Timer: {loadingTimer:F2}s)");
-                }
+                loadingBar.value = currentDisplayValue;
             }
-            
-            // Loading text'i güncelle
+
             if (loadingText != null)
             {
-                int percentage = Mathf.RoundToInt(loadingProgress * 100f);
-                loadingText.text = $"Yükleniyor... %{percentage}";
+                loadingText.text = $"Yükleniyor... %{Mathf.RoundToInt(currentDisplayValue * 100f)}";
             }
-            
-            // Loading animasyonu (opsiyonel)
+
             if (useLoadingAnimation && loadingImage != null)
             {
                 loadingImage.transform.Rotate(0, 0, -animationSpeed * Time.deltaTime * 360f);
             }
-            
+
+            if (asyncOperation.progress >= 0.9f && currentDisplayValue >= 0.99f)
+            {
+                if (loadingBar != null) loadingBar.value = 1f;
+                if (loadingText != null) loadingText.text = "Yükleniyor... %100";
+
+                asyncOperation.allowSceneActivation = true;
+            }
+
             yield return null;
         }
-        
-        // Minimum süre ve loading tamamlandı, loading bar'ı %100 yap
-        if (loadingBar != null)
-        {
-            loadingBar.value = 1f;
-        }
-        
-        if (loadingText != null)
-        {
-            loadingText.text = "Yükleniyor... %100";
-        }
-        
-        // Kısa bir bekleme (smooth geçiş için)
-        yield return new WaitForSeconds(0.2f);
-        
-        // Sahneyi aktif et
-        asyncOperation.allowSceneActivation = true;
     }
     
     // Bu metot diğer scriptlerden çağrılacak (sahne geçişi için)
