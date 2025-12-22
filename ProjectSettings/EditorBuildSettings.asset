@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Level1.unity
     guid: 8d1b7c6d6970448519b35a91da7c71e0
   - enabled: 1
+    path: Assets/Scenes/SemihMain.unity
+    guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
     path: Assets/LoadingScene.unity
     guid: 6c2d1dd26a0074e059038ca0a95e06d8
   m_configObjects:
