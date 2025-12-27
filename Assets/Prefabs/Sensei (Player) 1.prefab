@@ -213,10 +213,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DamageDealer
   damage: 10
   targetTags:
-  - Player
   - Boss
   attackCooldown: 0.5
-  destroyOnHit: 0
   isTrigger: 1
 --- !u!1 &4863947944886120291
 GameObject:
@@ -579,19 +577,20 @@ MonoBehaviour:
   footstepSource: {fileID: 5170313415186158889}
   combatSource: {fileID: 6505621156106848922}
   swingSound: {fileID: 8300000, guid: 228fbb22eaa314fc2b7db2ac0309f2c9, type: 3}
-  walkLoopSound: {fileID: 8300000, guid: 4b7f62d5bb87748ab9b7d62c46dbe221, type: 3}
-  runLoopSound: {fileID: 8300000, guid: 7cb3e1a1338ea4c04b21e8814e173fd0, type: 3}
+  walkLoopSound: {fileID: 8300000, guid: 66f38cfcb9f294cca9c27a9ef88730e2, type: 3}
+  runLoopSound: {fileID: 8300000, guid: 6990ab12ed6344793bd25745460eecc5, type: 3}
   jumpSound: {fileID: 8300000, guid: fe7ca38e9a5b54d129dbe351bee758e2, type: 3}
   landSound: {fileID: 8300000, guid: a3847507680c24896bb7ff2a04331cbd, type: 3}
   footstepVolume: 0.4
-  combatVolume: 0.6
-  jumpLandVolume: 0.5
+  combatVolume: 0.5
+  jumpLandVolume: 0.3
+  attackDamageDealer: {fileID: 3809096985856943102}
+  attackActiveDuration: 0.25
   walkSpeed: 4
   runSpeed: 6
   attack1TriggerName: Attack1
   attack2TriggerName: Attack2
   attack3TriggerName: Attack3
-  airAttackTriggerName: AirAttack
   comboResetTime: 0.5
   jumpForce: 7
   groundCheckRadius: 0.2
@@ -599,6 +598,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   groundCheck: {fileID: 1395352870216116710}
+  gameOverPanel: {fileID: 0}
 --- !u!114 &3021726360554031978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -650,7 +650,19 @@ MonoBehaviour:
       m_Calls: []
   OnDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 57627474122313553}
+        m_TargetAssemblyTypeName: SenseiController, Assembly-CSharp
+        m_MethodName: OnPlayerDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDamageTaken:
     m_PersistentCalls:
       m_Calls: []

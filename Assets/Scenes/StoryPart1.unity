@@ -230,10 +230,10 @@ MonoBehaviour:
   ekrandakiGorsel: {fileID: 1146015401}
   sonrakiSahneAdi: JumpTutorialScene
   hikayeKareleri:
-  - {fileID: -4762627324754857255, guid: 77b8a6d67c2264cb794353a97bc63faf, type: 3}
-  - {fileID: 5819150662236473732, guid: 03395a0f254a94f81b85bf3d0d468e6b, type: 3}
-  - {fileID: 6764669894147710076, guid: 113e859710f9b427986075888929ec70, type: 3}
-  - {fileID: 8722898794519636890, guid: 91a0ef782033d414f9ff9b05711415bd, type: 3}
+  - {fileID: -4762627324754857255, guid: 2e18c650e56db4a52ab279a504fa1742, type: 3}
+  - {fileID: 5819150662236473732, guid: a0665ef5fa061414786d658efb807fb1, type: 3}
+  - {fileID: 6764669894147710076, guid: 9e4cdf4ebbfdc49448a7dc1e1bf4722d, type: 3}
+  - {fileID: 8722898794519636890, guid: f15ac4532f0f241c3b66721e1bde254f, type: 3}
 --- !u!114 &239907641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,7 +434,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4762627324754857255, guid: 77b8a6d67c2264cb794353a97bc63faf, type: 3}
+  m_Sprite: {fileID: -4762627324754857255, guid: 2e18c650e56db4a52ab279a504fa1742, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
