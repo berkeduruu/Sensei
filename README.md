@@ -20,7 +20,7 @@ Bu proje, oyun geliştirme dersi kapsamında geliştirilmiş olup; hassas dövü
 
 Bu proje aşağıdaki teknolojiler ve araçlar kullanılarak geliştirilmiştir:
 
-* **Oyun Motoru:** Unity 2022.3 LTS
+* **Oyun Motoru:** Unity 6
 * **Programlama Dili:** C#
 * **IDE:** Visual Studio / VS Code
 * **UI Tasarım:** Gemini Banana Pro
