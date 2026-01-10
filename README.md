@@ -99,9 +99,3 @@ Oyun içerisindeki 2D pixel art karakterler ve çevre tasarımları Itch.io üze
 Oyunun UI elementleri (Can barları, menü butonları vb.) **Gemini Banana Pro** kullanılarak oluşturulmuştur.
 <img src= Assets/Sprites/HealthBars.png>
 <img src= Assets/Sprites/DeathPanel_1.png>
-
-
-<p align="center">
-  <img src="docs/ui_hpbar.png" alt="UI Health Bar" width="300">
-  <img src="docs/ui_menu_button.png" alt="UI Button" width="150">
-</p>
